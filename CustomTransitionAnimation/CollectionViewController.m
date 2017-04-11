@@ -82,6 +82,8 @@ static NSString * const reuseIdentifier = @"Cell";
     self.seletorCell = cell;
     
     ViewController *vc = [[ViewController alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//    vc.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     vc.view.backgroundColor = [UIColor cyanColor];
     vc.navigationItem.title = [NSString stringWithFormat:@"%ld",indexPath.item];
     [self.navigationController pushViewController:vc animated:YES];
