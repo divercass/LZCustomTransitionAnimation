@@ -11,7 +11,7 @@
 #import "PushTransition.h"
 #import "PopTransition.h"
 
-@interface CollectionViewController () <UINavigationControllerDelegate>
+@interface CollectionViewController () <UINavigationControllerDelegate, UIViewControllerTransitioningDelegate>
 
 @end
 
@@ -22,7 +22,6 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.navigationController.delegate = self;
-    
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
@@ -47,11 +46,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     
     // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -83,10 +77,11 @@ static NSString * const reuseIdentifier = @"Cell";
     
     ViewController *vc = [[ViewController alloc] init];
     vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-//    vc.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    vc.view.backgroundColor = [UIColor cyanColor];
+    vc.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+//    vc.view.backgroundColor = [UIColor cyanColor];
     vc.navigationItem.title = [NSString stringWithFormat:@"%ld",indexPath.item];
     [self.navigationController pushViewController:vc animated:YES];
+//    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end

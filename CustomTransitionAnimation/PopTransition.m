@@ -27,7 +27,6 @@
     CollectionViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *container = transitionContext.containerView;
     
-    
     //创建一个imageview的截图,并把原本imageview隐藏,造成移动imageview的假象
     UIView *snapshotView = [fromVC.avatarImageView snapshotViewAfterScreenUpdates:NO];
     snapshotView.frame = [container convertRect:fromVC.avatarImageView.frame fromView:fromVC.view];
@@ -45,7 +44,7 @@
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
         //如有导航栏注意添加导航栏高度
         CGRect frame = toVC.seletorCell.frame;
-        frame.origin.y = toVC.seletorCell.frame.origin.y + 64;
+        frame.origin.y = toVC.seletorCell.frame.origin.y;
         snapshotView.frame = frame;
         fromVC.view.alpha = 0;
     } completion:^(BOOL finished) {
